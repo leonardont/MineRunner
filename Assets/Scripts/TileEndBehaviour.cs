@@ -9,8 +9,9 @@ using UnityEngine;
 public class TileEndBehaviour : MonoBehaviour
 {
 
-    [Tooltip("How much time to wait before destroying" + "o tile depois de chegar ao fim")]
-    public float destroyTime = 1.5f;
+    [Tooltip("Quanto tempo esperar antes de destruir o tile depois de chegar ao fim")]
+    // ATENÇÃO! CASO O "destroyTime" SEJA MENOR OU IGUAL AO "waitTime" ENCONTRADO NO SCRIPT DO OBSTÁCULO (ObstacleBehaviour.cs), O JOGADOR NÃO RENASCERÁ QUANDO MORRER, POIS O OBSTÁCULO DESAPARECERÁ ANTES DA FUNÇÃO "ResetGame" SER CHAMADA!
+    public float destroyTime = 4.0f;
 
     private void OnTriggerEnter(Collider other)
     {

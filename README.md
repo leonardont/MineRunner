@@ -20,7 +20,7 @@
 <h3 align="center"><i><b>Artwork</b></i></h3>
 
 <p align="center">Steve® from Minecraft - Mojang Studios and Microsoft Corporation</p>
-<p align="center">Various Textures from Minecraft - Mojang Studios and Microsoft Corporation</p>
+<p align="center">Various Textures and Sounds from Minecraft - Mojang Studios and Microsoft Corporation</p>
 
 <br>
 

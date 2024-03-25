@@ -7,6 +7,9 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
 
+    public AudioClip hitSound;
+    public AudioClip deathSound;
+
     /// <summary> 
     /// Referência para o componente Rigidbody
     /// </summary>
@@ -35,9 +38,71 @@ public class PlayerBehaviour : MonoBehaviour
     void FixedUpdate()
     {
 
-        // Verifica se o player está se movendo para algum lado
+        // Verifica se o player está se movendo para algum lado com o teclado
         var horizontalSpeed = Input.GetAxis("Horizontal") * dodgeSpeed;
-        rb.AddForce(horizontalSpeed, 0, rollSpeed);
         
+        // Verifica se o jogo está rodando no editor da Unity ou em uma build standalone.
+        #if UNITY_STANDALONE || UNITY_WEBPLAYER || UNITY_EDITOR
+            // Se o mouse estiver pressionado (ou se a tela estiver sendo tocada no celular)
+            if (Input.GetMouseButton(0))
+            {
+                var screenPos = Input.mousePosition;
+                horizontalSpeed = CalculateMovement(screenPos);
+            }
+        #elif UNITY_IOS || UNITY_ANDROID
+            // Verifica se o Input registrou mais de zero toques na tela
+            if (Input.touchCount > 0)
+            {
+                // Guarda o primeiro toque detectado
+                var firstTouch = Input.touches[0];
+                var screenPos = firstTouch.position;
+                horizontalSpeed = CalculateMovement(screenPos);
+            }
+        #endif
+
+        rb.AddForce(horizontalSpeed, 0, rollSpeed);
+
     }
+
+    /// <summary>
+    /// Calculará para onde mover o jogador horizontalmente
+    /// </summary>
+    /// <param name="screenPos">A posição que o jogador tocou/clicou no screen space</param>
+    /// <returns>A direção a mover o jogador no eixo x</returns>
+    private float CalculateMovement(Vector3 screenPos)
+    {
+        // Captura a referência para a câmera, para conversão entre espaços
+        var cam = Camera.main;
+
+        // Converte a posição do mouse para uma range de 0 a 1
+        var viewPos = cam.ScreenToViewportPoint(screenPos);
+
+        float xMove = 0;
+
+        // Se pressionar o lado direito da tela...
+        if (viewPos.x < 0.5f)
+        {
+            xMove = -1;
+        }
+        // Se pressionar o lado esquerdo da tela...
+        else
+        {
+            xMove = 1;
+        }
+
+        // Substitui a horizontalSpeed com o valor próprio para celulares ou mouse
+        return xMove * dodgeSpeed;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Primeiro, checa se colidiu com o obstáculo
+        if(collision.gameObject.GetComponent<ObstacleBehaviour>())
+        {
+            // Executa a função "PlayClipAtPoint", que toca um som no exato ponto da morte do jogador
+            AudioSource.PlayClipAtPoint(hitSound, Camera.main.transform.position, 1.0f);
+            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, 1.0f);
+        }
+    }
+
 }

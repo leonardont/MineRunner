@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class ObstacleBehaviour : MonoBehaviour
 {
 
-    [Tooltip("How long to wait before restarting the game")]
+    [Tooltip("Quanto esperar para reiniciar o jogo")]
+    // ATENÇÃO! CASO O "waitTime" SEJA MAIOR OU IGUAL AO "destroyTime" ENCONTRADO NO SCRIPT DO TILE END (TileEndBehaviour.cs), O JOGADOR NÃO RENASCERÁ QUANDO MORRER, POIS O OBSTÁCULO DESAPARECERÁ ANTES DA FUNÇÃO "ResetGame" SER CHAMADA!
     public float waitTime = 2.0f;
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Primeiro, checa se colidiu com o jogador.
+        // Primeiro, checa se colidiu com o jogador
         if(collision.gameObject.GetComponent<PlayerBehaviour>())
         {
             // Destrói o jogador
