@@ -10,6 +10,9 @@ public class ObstacleBehaviour : MonoBehaviour
     // ATENÇÃO! CASO O "waitTime" SEJA MAIOR OU IGUAL AO "destroyTime" ENCONTRADO NO SCRIPT DO TILE END (TileEndBehaviour.cs), O JOGADOR NÃO RENASCERÁ QUANDO MORRER, POIS O OBSTÁCULO DESAPARECERÁ ANTES DA FUNÇÃO "ResetGame" SER CHAMADA!
     public float waitTime = 2.0f;
 
+    [Tooltip("Efeito de explosão para mostrar quando tocado")]
+    public GameObject explosion;
+
     private void OnCollisionEnter(Collision collision)
     {
         // Primeiro, checa se colidiu com o jogador
@@ -35,4 +38,18 @@ public class ObstacleBehaviour : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
     
+    /// <summary>
+    /// Se o objeto recebe um toque do jogador, spawna partículas de explosão
+    /// </summary>
+    private void PlayerTouch()
+    {
+        if (explosion != null)
+        {
+            var particles = Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(particles, 1.0f);
+        }
+
+        Destroy(this.gameObject);
+    }
+
 }

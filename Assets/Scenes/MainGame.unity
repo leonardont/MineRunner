@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.5002339, g: 0.61162573, b: 0.7998455, a: 1}
+  m_IndirectSpecularColor: {r: 0.501046, g: 0.6111514, b: 0.80025285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -178,7 +178,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305593202}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 3e8c219df3c16c9428bce22c30c2f91a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -272,7 +272,10 @@ MonoBehaviour:
   hitSound: {fileID: 8300000, guid: f440f9f00fac5c24ca525af1d1663a2c, type: 3}
   deathSound: {fileID: 8300000, guid: 2f38157468d5d8b478659fe5dce90081, type: 3}
   dodgeSpeed: 10
-  rollSpeed: 3.5
+  rollSpeed: 1
+  horizMovement: 0
+  minScale: 0.5
+  maxScale: 3
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
