@@ -1,6 +1,6 @@
 <h1 align="center">MineRunner</h1>
 
-<p align="center">A 3D runner Minecraft-themed game in which you control a ball, dodging obstacles and running through straight narrow passageways, developed as a college project for Faculdade de Tecnologia de Americana (FATEC-AM).</p><br>
+<p align="center">A 3D Minecraft-themed runner game in which you control a ball, dodging obstacles and running through straight narrow passageways, developed as a college project for Faculdade de Tecnologia de Americana (FATEC-AM).</p><br>
 <p align="center">This is the repository for the complete source codes and assets used in the game. You can use it for free to learn, research, modify or improve the game. The limit is your imagination!</p>
 
 <br>
@@ -13,7 +13,7 @@
 
 <h3 align="center"><i><b>Music</b></i></h3>
 
-<p align="center">Into the Jungle from Crash Bandicoot (1996) Original Soundtrack© by Naughty Dog, LLC and Sony Interactive Entertainment LLC</p>
+<p align="center">Minecraft - Volume Alpha complete album by C418</p>
 
 <br>
 

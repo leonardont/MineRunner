@@ -6,11 +6,12 @@ TagManager:
   tags:
   - ObstacleSpawn
   - Obstacle
+  - UI Manager
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PostFX
   - Water
   - UI
   - 
